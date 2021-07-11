@@ -1,0 +1,148 @@
+<!--
+	Build a basic timer app with the following functionality: 
+		1) A button to start/stop the timer 
+		2) A button to pause/resume the timer 
+		3) An Indicator to show the amount of time elapsed.
+-->
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Timer app</title>
+	<style type="text/css">
+		body {
+		    background: #202020;
+		    color: white;
+		}
+		button {
+		    width: 100px;
+		    height: 30px;
+		    border: 3px solid white;
+		    border-radius: 50px;
+		    background: #202020;
+		    color: white;
+		    cursor: pointer;
+		    outline: none;
+		}
+
+		#stopwatch {
+		    font-size: 100px;
+		    position: absolute;
+		    top: 45%;
+		    left: 50%;
+		    transform: translate(-50%, -55%);
+		}
+		#buttons {
+		    position: absolute;
+		    top: 55%;
+		    left: 48.4%;
+		    transform: translate(-51.6%, -45%);
+		}
+		#buttons li {
+		    display: inline;
+		    padding-left: 10px;
+		}
+		#stop{
+			display: none;
+		}
+		#pause{
+			display: none;
+		}
+		#resume{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+
+	<div id="stopwatch">
+        00:00:00
+    </div>
+
+    <ul id="buttons">
+        <li><button id="start" onclick="startTimer()">Start</button></li>
+        <li><button id="stop" onclick="stopTimer()">Stop</button></li>
+        <li><button id="pause" onclick="pauseTimer()">Pause</button></li>
+        <li><button id="resume" onclick="startTimer()">Resume</button></li>
+    </ul>
+
+	<script type="text/javascript">
+		const timer = document.getElementById('stopwatch');
+
+		var hr = 0;
+		var min = 0;
+		var sec = 0;
+		var stoptime = true;
+		const startButton = document.getElementById('start');
+		const stopButton = document.getElementById('stop');
+		const pauseButton = document.getElementById('pause');
+		const resumeButton = document.getElementById('resume');
+
+		function startTimer() {
+		  if (stoptime == true) {
+		        stoptime = false;
+		        startButton.style.display = 'none';
+		        stopButton.style.display = 'inline-block';
+		        pauseButton.style.display = 'inline-block';
+		        resumeButton.style.display = 'none';
+		        timerCycle();
+		    }
+		}
+		function pauseTimer() {
+		  if (stoptime == false) {
+		    stoptime = true;
+		  }
+		  startButton.style.display = 'none';
+		  stopButton.style.display = 'inline-block';
+		  pauseButton.style.display = 'none';
+		  resumeButton.style.display = 'inline-block';
+		}
+
+		function timerCycle() {
+		    if (stoptime == false) {
+		    sec = parseInt(sec);
+		    min = parseInt(min);
+		    hr = parseInt(hr);
+
+		    sec = sec + 1;
+
+		    if (sec == 60) {
+		      min = min + 1;
+		      sec = 0;
+		    }
+		    if (min == 60) {
+		      hr = hr + 1;
+		      min = 0;
+		      sec = 0;
+		    }
+
+		    if (sec < 10 || sec == 0) {
+		      sec = '0' + sec;
+		    }
+		    if (min < 10 || min == 0) {
+		      min = '0' + min;
+		    }
+		    if (hr < 10 || hr == 0) {
+		      hr = '0' + hr;
+		    }
+
+		    timer.innerHTML = hr + ':' + min + ':' + sec;
+
+		    setTimeout("timerCycle()", 1000);
+		  }
+		}
+
+		function stopTimer() {
+		    timer.innerHTML = "00:00:00";
+		    stoptime = true;
+		    hr = 0;
+		    sec = 0;
+		    min = 0;
+		    startButton.style.display = 'inline-block';
+		  	stopButton.style.display = 'none';
+		  	pauseButton.style.display = 'none';
+		  	resumeButton.style.display = 'none';
+		}
+	</script>
+</body>
+</html>

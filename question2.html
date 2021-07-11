@@ -1,0 +1,95 @@
+<!--
+	Create a table with alternating rows as striped. Make the table responsive to overflow in x-direction and add enough content to show the scrolling in the x-direction. Further, the row in the table on which the mouse is hovering should have a darker background, and the animation of mouse over and out should last 1 second. 
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Question 2 Solution</title>
+
+	<style type="text/css">
+		.wrapper{
+			overflow-x: auto;
+			width: 1000px;
+			margin:50px auto;
+		}
+		table{
+			border-collapse: collapse;
+			white-space: nowrap;
+		}
+		tbody tr:nth-child(even){
+			background-color: #e0e4dd;
+			transition-delay: 1s;
+		}
+		tbody tr:nth-child(even):hover{
+			background-color: #c1c9ba;
+			transition: 0.6s;
+		}
+		tbody tr:nth-child(odd){
+			background-color: #faf2ef;
+			transition-delay: 1s;
+		}
+		tbody tr:nth-child(odd):hover{
+			background-color: #f1d9d0;
+			transition: 0.6s;
+		}
+		td{
+			padding: 10px;
+		}
+		thead tr{
+			font-weight: 700;
+			text-align: center;
+			background-color: #aaa;
+		}
+
+		
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<table class="table">
+		<thead>
+			<tr>
+				<td>Column 1</td>
+				<td>Column 2</td>
+				<td>Column 3</td>
+				<td>Column 4</td>
+				<td>Column 5</td>	
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>This is the First row First Column</td>
+				<td>This is the First row Second Column</td>
+				<td>This is the First row Third Column</td>
+				<td>This is the First row Fourth Column</td>
+				<td>This is the First row Fifth Column</td>
+			</tr>
+			<tr>
+				<td>This is the Second row First Column</td>
+				<td>This is the Second row Second Column</td>
+				<td>This is the Second row Third Column</td>
+				<td>This is the Second row Fourth Column</td>
+				<td>This is the Second row Fifth Column</td>
+			</tr>
+			<tr>
+				<td>This is the Third row First Column</td>
+				<td>This is the Third row Second Column</td>
+				<td>This is the Third row Third Column</td>
+				<td>This is the Third row Fourth Column</td>
+				<td>This is the Third row Fifth Column</td>
+			</tr>
+			<tr>
+				<td>This is the Fourth row First Column</td>
+				<td>This is the Fourth row Second Column</td>
+				<td>This is the Fourth row Third Column</td>
+				<td>This is the Fourth row Fourth Column</td>
+				<td>This is the Fourth row Fifth Column</td>
+			</tr>
+		</tbody>
+	</table>
+	</div>
+
+</body>
+</html>

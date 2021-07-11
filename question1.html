@@ -1,0 +1,53 @@
+<!--
+	Create a page with two boxes. Each should take up 35% of the width, with 10% on the left, in between, and right. Give them a background color and write some text. Center the text both horizontally and vertically. One box should have an opacity of 0.5 for the whole box, and the other should have an opacity of 0.5 only for the background. Make sure these boxes stack on top of each other on small screens. You can use media queries or any other way you like. 
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Question 1 Solution</title>
+
+	<style type="text/css">
+		/* Parent section which contains both boxes*/
+		.boxes{
+			display: block;
+			width: 100%;
+		}
+		/* Common CSS for both boxes*/
+		.box{
+			display:inline-block;
+			width: 35%;
+			margin-left: 10%;
+			line-height: 100px;
+			border: #000 1px solid;
+			background-color: rgba(170,170,50,1);
+			overflow-x: initial;
+		}
+		/* To make the text align vertically and horizontally*/
+		.box p{
+			text-align: center;
+			vertical-align:middle; /* Used in conjunction with line-height property set in .box class*/
+		}
+		/* Created 2 classes box1 and box2 to have different opacity property */
+		.box1{
+			opacity: 0.5; 
+		}
+		.box2{
+			background-color: rgba(170,170,50,0.5);
+		}
+		/* Resets the display property to block for screen smaller than 600px */
+		@media only screen and (max-width: 600px) {
+			.box{
+				display: block;
+			}
+		}
+	</style>
+</head>
+<body>
+	<section class="boxes">
+		<div class="box box1"><p>This is box 1</p></div>
+		<div class="box box2"><p>This is box 2</p></div>
+	</section>
+</body>
+</html>
